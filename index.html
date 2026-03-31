@@ -12,18 +12,21 @@
   <style>
     /* ── TOKENS ─────────────────────────────────────────── */
     :root {
-      --bg:           #0C0A18;
-      --bg-deep:      #08060F;
-      --text-primary: #F0E8D5;
-      --text-secondary:#A89880;
-      --text-muted:   #5C5468;
-      --accent:       #D4720A;
-      --accent-warm:  #C9A84C;
-      --accent-cool:  #7A8FAA;
-      --rule:         #1E1A30;
-      --font-display: 'Cormorant', Georgia, serif;
-      --font-head:    'Syne', sans-serif;
-      --font-body:    'Jost', sans-serif;
+      --bg:             #07050E;
+      --bg-deep:        #050309;
+      --text-primary:   #F0E8D5;
+      --text-secondary: #A89880;
+      --text-muted:     #5C5068;
+      --accent:         #D4720A;
+      --accent-warm:    #C9A84C;
+      --accent-nebula:  #7B3FA0;
+      --accent-cosmic:  #3D6FD4;
+      --accent-plasma:  #C94040;
+      --rule:           #1A1530;
+      --flow-gradient:  linear-gradient(90deg, #D4720A, #7B3FA0, #3D6FD4);
+      --font-display:   'Cormorant', Georgia, serif;
+      --font-head:      'Syne', sans-serif;
+      --font-body:      'Jost', sans-serif;
     }
 
     /* ── RESET ───────────────────────────────────────────── */
@@ -116,12 +119,32 @@
       text-align: center;
       padding: 8rem 2rem 6rem;
       position: relative;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212,114,10,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(61,111,212,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123,63,160,0.07) 0%, transparent 60%);
+      animation: cosmic-breathe 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes cosmic-breathe {
+      from {
+        background:
+          radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212,114,10,0.13) 0%, transparent 70%),
+          radial-gradient(ellipse 50% 60% at 80% 20%, rgba(61,111,212,0.10) 0%, transparent 70%),
+          radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123,63,160,0.07) 0%, transparent 60%);
+      }
+      to {
+        background:
+          radial-gradient(ellipse 70% 55% at 25% 75%, rgba(212,114,10,0.18) 0%, transparent 70%),
+          radial-gradient(ellipse 55% 65% at 75% 25%, rgba(61,111,212,0.14) 0%, transparent 70%),
+          radial-gradient(ellipse 45% 45% at 50% 50%, rgba(123,63,160,0.10) 0%, transparent 60%);
+      }
     }
 
     .hero-rule-top {
       width: 1px;
       height: 80px;
-      background: linear-gradient(to bottom, transparent, var(--rule));
+      background: linear-gradient(to bottom, transparent, rgba(212,114,10,0.4));
       margin-bottom: 3rem;
       animation: grow-line 1.2s ease forwards;
       transform-origin: top;
@@ -200,7 +223,7 @@
     .hero-rule-bottom {
       width: 1px;
       height: 80px;
-      background: linear-gradient(to bottom, var(--rule), transparent);
+      background: linear-gradient(to bottom, rgba(61,111,212,0.4), transparent);
       margin-top: 3.5rem;
       opacity: 0;
       animation: fade-in 1s ease 1.8s forwards;
@@ -238,7 +261,8 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--rule);
+      background: var(--flow-gradient);
+      opacity: 0.4;
     }
 
     /* ── SIGNAL ──────────────────────────────────────────── */
@@ -290,11 +314,13 @@
       font-family: var(--font-display);
       font-size: 2.2rem;
       font-weight: 300;
-      color: var(--rule);
       line-height: 1;
       min-width: 2.5rem;
       padding-top: 0.1rem;
     }
+    .thread-item:nth-child(1) .thread-num { color: var(--accent); }
+    .thread-item:nth-child(2) .thread-num { color: var(--accent-nebula); }
+    .thread-item:nth-child(3) .thread-num { color: var(--accent-cosmic); }
 
     .thread-content h3 {
       font-family: var(--font-head);
@@ -302,9 +328,11 @@
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
       margin-bottom: 0.4rem;
     }
+    .thread-item:nth-child(1) .thread-content h3 { color: var(--accent); }
+    .thread-item:nth-child(2) .thread-content h3 { color: var(--accent-nebula); }
+    .thread-item:nth-child(3) .thread-content h3 { color: var(--accent-cosmic); }
     .thread-content p {
       font-size: 0.88rem;
       color: var(--text-secondary);
@@ -341,7 +369,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 2px; height: 0;
-      background: var(--accent);
+      background: var(--flow-gradient);
       transition: height 0.4s ease;
     }
     .work-card:hover::before { height: 100%; }
@@ -446,7 +474,7 @@
       transition: color 0.3s, transform 0.3s;
     }
     .writing-item:hover .writing-arrow {
-      color: var(--accent);
+      color: var(--accent-nebula);
       transform: translateX(6px);
     }
     .writing-item.upcoming {
