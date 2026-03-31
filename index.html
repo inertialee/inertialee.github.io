@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kshitij Govil — dummyneversleeps</title>
-  <meta name="description" content="Physicist. Quant. Systems Architecture. Signal from noise." />
+  <meta name="description" content="Physicist. Quant. Operator. Signal from noise — always." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -12,14 +12,15 @@
   <style>
     /* ── TOKENS ─────────────────────────────────────────── */
     :root {
-      --bg:           #F9F7F4;
-      --bg-deep:      #F0EDE6;
-      --text-primary: #1C1917;
-      --text-secondary:#57534E;
-      --text-muted:   #A8A29E;
-      --accent:       #2D3561;
+      --bg:           #0C0A18;
+      --bg-deep:      #08060F;
+      --text-primary: #F0E8D5;
+      --text-secondary:#A89880;
+      --text-muted:   #5C5468;
+      --accent:       #D4720A;
       --accent-warm:  #C9A84C;
-      --rule:         #DDD9D3;
+      --accent-cool:  #7A8FAA;
+      --rule:         #1E1A30;
       --font-display: 'Cormorant', Georgia, serif;
       --font-head:    'Syne', sans-serif;
       --font-body:    'Jost', sans-serif;
@@ -36,8 +37,7 @@
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
-      /* Subtle grain texture */
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
     /* ── NOISE OVERLAY ───────────────────────────────────── */
@@ -46,7 +46,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.018;
+      opacity: 0.025;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       z-index: 9999;
     }
@@ -64,7 +64,7 @@
       transition: background 0.4s ease;
     }
     nav.scrolled {
-      background: rgba(249,247,244,0.92);
+      background: rgba(8,6,15,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--rule);
     }
@@ -333,7 +333,7 @@
     }
     .work-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(45,53,97,0.08);
+      box-shadow: 0 12px 40px rgba(212,114,10,0.10);
       z-index: 1;
     }
     .work-card::before {
@@ -421,7 +421,6 @@
     }
     .writing-item:first-child { border-top: 1px solid var(--rule); }
     .writing-item:hover { padding-left: 1rem; }
-
     .writing-item:hover .writing-title { color: var(--accent); }
 
     .writing-meta {
@@ -449,6 +448,18 @@
     .writing-item:hover .writing-arrow {
       color: var(--accent);
       transform: translateX(6px);
+    }
+    .writing-item.upcoming {
+      opacity: 0.45;
+      cursor: default;
+      pointer-events: none;
+    }
+    .writing-item.upcoming .writing-arrow {
+      font-size: 0.65rem;
+      font-family: var(--font-head);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     /* ── CONNECT ─────────────────────────────────────────── */
@@ -563,7 +574,7 @@
       .cursor-ring {
         position: fixed;
         width: 32px; height: 32px;
-        border: 1px solid rgba(45,53,97,0.35);
+        border: 1px solid rgba(212,114,10,0.35);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
@@ -593,7 +604,7 @@
   <!-- Hero -->
   <section id="hero">
     <div class="hero-rule-top"></div>
-    <p class="hero-eyebrow">Kshitij Govil &nbsp;·&nbsp; Physicist · Quant · Builder</p>
+    <p class="hero-eyebrow">Kshitij Govil &nbsp;·&nbsp; Physicist · Quant · Operator</p>
     <h2 class="hero-statement">
       The universe is fluid —<br><em>not a fluid.</em>
     </h2>
@@ -619,8 +630,8 @@
         <div class="thread-item">
           <span class="thread-num">I</span>
           <div class="thread-content">
-            <h3>Astrophysics</h3>
-            <p>MSc Physics, York University Toronto. CCD photometry, BVRI calibration, quantum computing theory, radio astronomy, pulsar timing arrays. The universe as a signal source.</p>
+            <h3>Physics</h3>
+            <p>Two MScs — Condensed Matter (MUJ, 2015) and Astrophysics (York, 2020). Thin film optical transmittance. CCD photometry at the Carswell Observatory. Pulsar timing arrays. Materials to cosmos.</p>
           </div>
         </div>
         <div class="thread-item">
@@ -634,7 +645,7 @@
           <span class="thread-num">III</span>
           <div class="thread-content">
             <h3>Algorithmic Systems</h3>
-            <p>Founder, Varad Lifestyle Consulting. Building CLDSA — a market-agnostic algorithmic trading system. Paper trading confirmed. Institutional grade. Fully owned.</p>
+            <p>Founder, Varad Lifestyle Consulting. Building CLDSA — an 84-cell, medallion-grade, market-agnostic algorithmic trading engine. Broker-agnostic. Instrument-agnostic. Fully owned.</p>
           </div>
         </div>
       </div>
@@ -650,38 +661,38 @@
         <div class="work-card reveal">
           <p class="work-card-tag">Algorithmic Trading</p>
           <h3>CLDSA</h3>
-          <p><span class="status-dot"></span>Paper trading active. Market-agnostic architecture. Cells 0–7 confirmed. Built on Alpaca + yfinance. RSI, SMA signal engine. Full portfolio tracker.</p>
+          <p><span class="status-dot"></span>84 cells. 9 layers. Market-agnostic architecture. Cells 0–7 confirmed. Medallion-grade design. Built and owned under Varad Lifestyle Consulting.</p>
           <a href="https://github.com/inertialee/CLDSA" target="_blank" class="work-card-link">View on GitHub →</a>
         </div>
 
         <div class="work-card reveal">
           <p class="work-card-tag">Observational Astronomy</p>
           <h3>Telescope Characterisation</h3>
-          <p>1m telescope, Allan I. Carswell Observatory. BVRI photometry, Stetson calibration, IRAF data reduction. Plate scale, limiting magnitudes, curves of growth. Graduate research.</p>
+          <p>1m telescope, Allan I. Carswell Observatory. BVRI photometry, Stetson calibration, IRAF data reduction. Plate scale, limiting magnitudes, curves of growth. Graduate research, York 2020.</p>
         </div>
 
         <div class="work-card reveal">
           <p class="work-card-tag">Quantum Physics</p>
-          <h3>The Stateful World of Quantum Computing</h3>
-          <p>From Turing's tape to Google's Sycamore. Feynman, Deutsch, Shor. Hamiltonians, decoherence, quantum supremacy. 43 primary sources. Grade: A+.</p>
+          <h3>The Stately World of Quantum Computing</h3>
+          <p>From Turing's tape to Google's Sycamore. Feynman, Deutsch, Shor. Hamiltonians, decoherence, quantum supremacy. 43 primary sources. York University, 2019.</p>
         </div>
 
         <div class="work-card reveal">
           <p class="work-card-tag">Survey Astronomy</p>
           <h3>LSST Technical Report</h3>
-          <p>Comprehensive analysis of the Large Synoptic Survey Telescope. 3-mirror anastigmat optics, 3.2Gpx CCD camera, 20TB/night pipeline, 50 petabyte survey strategy. Dark matter. Dark energy.</p>
+          <p>Original technical paper on the Large Synoptic Survey Telescope. 3-mirror anastigmat optics, 3.2Gpx CCD camera, 20TB/night pipeline, 50 petabyte survey strategy. Dark matter. Dark energy.</p>
+        </div>
+
+        <div class="work-card reveal">
+          <p class="work-card-tag">Published Research · 2015</p>
+          <h3>ZnMnCoO Nanoparticle Synthesis</h3>
+          <p>Govil K. et al. Structural characterisation of Zn₀.₉Mn₀.₀₅Co₀.₀₅O via sol-gel synthesis, XRD, and Williamson-Hall analysis. 26nm crystal size. Compressive strain −0.0068. IJASET, Jan 2015.</p>
         </div>
 
         <div class="work-card reveal">
           <p class="work-card-tag">Capital Markets</p>
           <h3>Institutional Operations</h3>
           <p>HSBC 2007–09: US credit operations through subprime crisis. Deutsche Bank 2009–13: US equities, PWM, corporate actions. London, Tokyo, Liverpool. CISI certified.</p>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Consulting</p>
-          <h3>Varad Lifestyle Consulting</h3>
-          <p>Registered Vancouver BC, 2022. India–Canada advisory. Market research across Vancouver, Toronto, Jaipur. First client: Mumbai fabric & garment — built to India + Australia presence.</p>
         </div>
 
       </div>
@@ -693,28 +704,52 @@
     <p class="section-label reveal">Writing</p>
     <div class="writing-list reveal">
 
-      <div class="writing-item">
+      <a href="./writing/dark-gets-the-land-of-light.pdf" target="_blank" class="writing-item">
         <div>
           <p class="writing-meta">Science Essay · Graduate Level</p>
-          <p class="writing-title">Dark craves the land of light — Stellar Fate and the Radio Window</p>
+          <p class="writing-title">Dark gets the land of light — Stellar Fate and the Radio Window</p>
         </div>
         <span class="writing-arrow">→</span>
-      </div>
+      </a>
 
-      <div class="writing-item">
+      <a href="./writing/lsst-technical-report.pdf" target="_blank" class="writing-item">
         <div>
-          <p class="writing-meta">Technical Report · Graduate Level</p>
+          <p class="writing-meta">Technical Report · Original Paper</p>
           <p class="writing-title">The Large Synoptic Survey Telescope — Architecture, Science and the Petabyte Sky</p>
         </div>
         <span class="writing-arrow">→</span>
-      </div>
+      </a>
 
-      <div class="writing-item">
+      <a href="./writing/stately-world-quantum-computing-part1.pdf" target="_blank" class="writing-item">
         <div>
-          <p class="writing-meta">Philosophy · Original</p>
-          <p class="writing-title">The universe is fluid — not a fluid &nbsp;·&nbsp; On intent, continuity, and the architecture of knowledge</p>
+          <p class="writing-meta">Survey · Part I of III — Foundations</p>
+          <p class="writing-title">The Stately World of Quantum Computing — Turing, Feynman, and the Machine that Thinks in Superposition</p>
         </div>
         <span class="writing-arrow">→</span>
+      </a>
+
+      <a href="./writing/stately-world-quantum-computing-part2.pdf" target="_blank" class="writing-item">
+        <div>
+          <p class="writing-meta">Survey · Part II of III — Algorithms</p>
+          <p class="writing-title">The Stately World of Quantum Computing — Deutsch, Shor, and the Geometry of Qubits</p>
+        </div>
+        <span class="writing-arrow">→</span>
+      </a>
+
+      <div class="writing-item upcoming">
+        <div>
+          <p class="writing-meta">Survey · Part III of III — Supremacy &amp; Now · 2026 Update</p>
+          <p class="writing-title">The Stately World of Quantum Computing — Sycamore, Willow, and the Post-Classical Horizon</p>
+        </div>
+        <span class="writing-arrow">Upcoming</span>
+      </div>
+
+      <div class="writing-item upcoming">
+        <div>
+          <p class="writing-meta">Philosophy · Original · Draft</p>
+          <p class="writing-title">WHY 4π — The Geometry of Isotropy</p>
+        </div>
+        <span class="writing-arrow">Upcoming</span>
       </div>
 
     </div>
@@ -723,11 +758,11 @@
   <!-- Connect -->
   <section id="connect">
     <h2 class="reveal">If the signal<br>reaches you —</h2>
-    <p class="reveal">Physicist. Quant. Builder. Open to opportunities in algorithmic trading, quantitative research, physics operations and research, PhD programs, and anything that rewards signal detection under noise.</p>
+    <p class="reveal">Physicist. Quant. Operator. Open to opportunities in algorithmic trading, quantitative research, silicon photonics, optoelectronics, PhD programs, and anything that rewards signal detection under noise.</p>
     <div class="connect-links reveal">
       <a href="https://github.com/inertialee" target="_blank" class="connect-link">GitHub</a>
-      <a href="mailto:hello@dummyneversleeps.com" class="connect-link">Email</a>
-      <a href="https://linkedin.com" target="_blank" class="connect-link">LinkedIn</a>
+      <a href="mailto:kshitij@dummyneversleeps.com" class="connect-link">Email</a>
+      <a href="https://linkedin.com/in/kshitijgovil" target="_blank" class="connect-link">LinkedIn</a>
     </div>
   </section>
 
@@ -749,7 +784,7 @@
     const reveals = document.querySelectorAll('.reveal');
     const threadItems = document.querySelectorAll('.thread-item');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setTimeout(() => entry.target.classList.add('visible'), 80);
         }
@@ -790,11 +825,11 @@
     document.querySelectorAll('a, button, .work-card').forEach(el => {
       el.addEventListener('mouseenter', () => {
         if (cursor) cursor.style.transform = 'translate(-50%,-50%) scale(2)';
-        if (ring) { ring.style.width = '50px'; ring.style.height = '50px'; ring.style.borderColor = 'rgba(45,53,97,0.6)'; }
+        if (ring) { ring.style.width = '50px'; ring.style.height = '50px'; ring.style.borderColor = 'rgba(212,114,10,0.6)'; }
       });
       el.addEventListener('mouseleave', () => {
         if (cursor) cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-        if (ring) { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.borderColor = 'rgba(45,53,97,0.35)'; }
+        if (ring) { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.borderColor = 'rgba(212,114,10,0.35)'; }
       });
     });
   </script>
