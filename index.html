@@ -119,32 +119,40 @@
       text-align: center;
       padding: 8rem 2rem 6rem;
       position: relative;
+      z-index: 1; /* Establishes stacking context for the background */
+      overflow: hidden; /* Contains the cosmic spread */
+    }
+
+    /* The Cosmic Blend (Additive Light Simulation) */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: -20%; /* Bleeds past the edges so the scale animation is seamless */
+      z-index: -1;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212,114,10,0.13) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(61,111,212,0.10) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123,63,160,0.07) 0%, transparent 60%);
+        radial-gradient(circle at 25% 75%, rgba(212,114,10,0.40) 0%, transparent 60%), /* The Orange Plasma */
+        radial-gradient(circle at 75% 25%, rgba(61,111,212,0.35) 0%, transparent 60%), /* The Cosmic Blue */
+        radial-gradient(circle at 50% 50%, rgba(123,63,160,0.25) 0%, transparent 70%); /* The Nebula Core */
       animation: cosmic-breathe 8s ease-in-out infinite alternate;
     }
 
     @keyframes cosmic-breathe {
       from {
-        background:
-          radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212,114,10,0.13) 0%, transparent 70%),
-          radial-gradient(ellipse 50% 60% at 80% 20%, rgba(61,111,212,0.10) 0%, transparent 70%),
-          radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123,63,160,0.07) 0%, transparent 60%);
+        opacity: 0.6;
+        transform: scale(1);
       }
       to {
-        background:
-          radial-gradient(ellipse 70% 55% at 25% 75%, rgba(212,114,10,0.18) 0%, transparent 70%),
-          radial-gradient(ellipse 55% 65% at 75% 25%, rgba(61,111,212,0.14) 0%, transparent 70%),
-          radial-gradient(ellipse 45% 45% at 50% 50%, rgba(123,63,160,0.10) 0%, transparent 60%);
+        opacity: 1;
+        /* Scaling up forces the orange and blue gradients to expand and blend in the center */
+        transform: scale(1.15); 
       }
     }
 
     .hero-rule-top {
       width: 1px;
       height: 80px;
-      background: linear-gradient(to bottom, transparent, rgba(212,114,10,0.4));
+      background: linear-gradient(to bottom, transparent, rgba(212,114,10,0.6));
       margin-bottom: 3rem;
       animation: grow-line 1.2s ease forwards;
       transform-origin: top;
@@ -223,11 +231,22 @@
     .hero-rule-bottom {
       width: 1px;
       height: 80px;
-      background: linear-gradient(to bottom, rgba(61,111,212,0.4), transparent);
+      background: linear-gradient(to bottom, rgba(61,111,212,0.6), transparent);
       margin-top: 3.5rem;
       opacity: 0;
       animation: fade-in 1s ease 1.8s forwards;
     }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    
+      
 
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(18px); }
