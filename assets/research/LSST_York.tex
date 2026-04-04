@@ -1,0 +1,729 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tocloft}
+
+% ── Page geometry ─────────────────────────────────────────────────────────────
+\geometry{
+  a4paper,
+  left=30mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm,
+}
+
+% ── Hyperref setup ────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue!60!black,
+  citecolor=black,
+  pdftitle={The Large Synoptic Survey Telescope (LSST)},
+  pdfauthor={Kshitij Govil},
+}
+
+% ── Header / Footer ───────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{The Large Synoptic Survey Telescope}}
+\fancyhead[R]{\small\textit{Kshitij Govil}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Section formatting ────────────────────────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}
+  {\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalsize\itshape}{\thesubsubsection}{1em}{}
+
+% ── Line spacing ──────────────────────────────────────────────────────────────
+\onehalfspacing
+
+% ── Figure caption style ──────────────────────────────────────────────────────
+\captionsetup{
+  font=small,
+  labelfont=bf,
+  labelsep=period,
+}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Title page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{30mm}
+  {\LARGE\bfseries The Large Synoptic Survey Telescope (LSST)\par}
+  \vspace{8mm}
+  \rule{\textwidth}{0.5pt}
+  \vspace{8mm}
+  {\large Kshitij Govil\par}
+  \vspace{4mm}
+  {\normalsize Varad Lifestyle Consulting\par}
+  {\normalsize Vancouver~$\cdot$~Jaipur\par}
+  \vspace{8mm}
+  {\small\url{https://dummyneversleeps.com}~~$\cdot$~~
+         \url{https://github.com/inertialee}\par}
+  \vspace{16mm}
+  \begin{quote}
+    \itshape
+    ``Space is for everybody. It's not just for a few people in science or math,
+    or for a select group of astronauts. That's our new frontier out there,
+    and it's everybody's business to know about space.''
+    \begin{flushright}
+      --- \textsc{Christa McAuliffe}\\
+      {\small Astronaut, The Challenger Space Shuttle, December~6, 1985}
+    \end{flushright}
+  \end{quote}
+  \vfill
+  {\small York University~$\cdot$~2020}
+\end{titlepage}
+
+% ── Table of Contents ─────────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+% ─────────────────────────────────────────────────────────────────────────────
+
+When Charles Messier and Pierre M\'{e}chain created the list of Messier objects
+in the late 18th century, the first 110 objects to appear were listed out of
+frustration---separately (or so we are told), as non-comet objects seemingly
+unwanted in their hunt for comets. It boasts of some deep sky objects as well,
+making it one of the most valuable catalogues of all time.
+
+A little over 200 years later, we had moved well beyond naked-eye observations
+and photographic plates to the first digital survey, i.e.\ the Sloan Digital
+Sky Survey (the year 2000). About the same time (1996--2001), from the
+conceptual hopes of a Dark Matter Telescope and the Fifth Decadal Report
+(\textit{Astronomy and Astrophysics in the New Millennium}), the ``Large
+Aperture Synoptic Survey Telescope''---or now, the Large Synoptic Survey
+Telescope, the LSST---was proposed. The basic design and objectives were
+comprehensively laid out even at this juncture:
+
+\begin{quote}
+  ``The Large-aperture Synoptic Survey Telescope (LSST) is a 6.5-m-class
+  optical telescope designed to survey the visible sky every week down to a
+  much fainter level than that reached by existing surveys. It will catalog
+  90 percent of the near-Earth objects larger than 300~m and assess the threat
+  they pose to life on Earth. It will find some 10,000 primitive objects in the
+  Kuiper Belt, which contains a fossil record of the formation of the solar
+  system. It will also contribute to the study of the structure of the universe
+  by observing thousands of supernovae, both nearby and at large redshift, and
+  by measuring the distribution of dark matter through gravitational lensing.
+  All the data will be available through the National Virtual Observatory,
+  providing access for astronomers and the public to very deep images of the
+  changing night sky.''
+\end{quote}
+
+For a project that was meant to take the better part of the next two decades,
+the statement above seems remarkably crisp in hindsight.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{General Overview}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Home Base and Affiliations}
+
+The LSST was formally initiated by the LSST Corporation (non-profit,
+headquartered in Tucson, Arizona), where nearly 40 institutional members and
+34 international contributors representing 23 countries came together for the
+advance of science and astronomy. The University of Arizona and the University
+of Washington are founding members; the member list includes Google Inc.\ as
+one well-known commercial entity.\footnote{The full list of members can be
+found at \url{https://www.lsstcorporation.org/node/3}.} Its partnership with
+the Association of Universities for Research in Astronomy (AURA) under the
+National Science Foundation (NSF, USA), and with the Stanford Linear
+Accelerator Center (SLAC) under the Department of Energy (DOE, USA) for
+operations and data activities, are primary mentions in the list of
+associations.
+
+Broadly, the point runners for various parts of the project are:
+
+\begin{itemize}[leftmargin=*]
+  \item AURA to oversee the site construction.
+  \item The telescope provided by the National Optical Astronomy
+        Observatory.\footnote{Ground-based observatory in the USA.}
+  \item The data operations centre to be created by the National Centre for
+        Super-Computing Applications.\footnote{Part of the University of
+        Illinois, USA.}
+  \item The camera designed and constructed by the SLAC National Accelerator.
+\end{itemize}
+
+The current LSST team is led by Physicist and Stanford University Professor
+Steven Kahn, amongst more than 100 astronomers, physicists, and engineers
+spanning the globe.
+
+\subsection{Site Location}
+
+The LSST site is being constructed at El Pe\~{n}\'{o}n Cerro Pach\'{o}n,
+Coquimbo region in north-central Chile. The Cerro Pach\'{o}n ridge, in the
+foothills of the Andes Mountains, will be home to the LSST summit facility---a
+region also known for the Gemini-South and the SOAR\footnote{Southern
+Astrophysical Research (SOAR) telescope, Cerro Pach\'{o}n, Chile.}
+telescopes. The piece of land is owned by AURA and is located roughly 100
+kilometres from the LSST base facility in the town of La Serena. The region is
+known for its exceedingly dry climate, making it suitable for infrared
+observations, with very stable air overhead promising excellent seeing.
+
+The summit facility spreads across two mountain peaks, amidst a main and an
+auxiliary telescope, which have been tested for their rock strength and erosion
+resistance. Following a detailed fluid dynamic analysis and weather testing, the
+main telescope naturally finds itself at the highest and largest peak, with the
+auxiliary one on a smaller peak farther east downhill. The orientation of the
+facility ``steps'' down into a saddle area south-east of the main telescope,
+serving as the service and operations building.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Summit facility and wind direction
+  % Source: https://www.lsst.org/about/tel-site/summit
+  % To add: \includegraphics[width=0.85\textwidth]{images/summit_facility.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 1: Summit Facility and Wind Direction]}\\
+    \small Source: \url{https://www.lsst.org/about/tel-site/summit}
+  \vspace{20pt}}}
+  \caption{Summit facility and wind direction.
+           Courtesy: \url{https://www.lsst.org/about/tel-site/summit}}
+  \label{fig:summit}
+\end{figure}
+
+\subsection{Site Description}
+
+The structure of the main telescope includes the telescope pier, a lower
+enclosure supporting a rotating dome, and a 3{,}000 square metre service and
+operations building. The auxiliary telescope is housed in a nearby enclosure.
+
+A well-connected building is meant to provide a protected environment to care
+for and move the mirrors around, while keeping temperature-controlled areas
+separated to house observatory equipment. Heat-generating parts are carefully
+maintained far enough from the equipment and below the service level, serviced
+by an 80-tonne lift to move the mirrors and camera between the telescope and
+the maintenance level. Magnetic motors will be employed to facilitate fast,
+smooth, and quiet slewing, with the challenge being that the telescope must
+slew 3.5 degrees to an adjacent field and settle in 4--5 seconds (4 seconds
+for the structure, and 1 second for the mirror---5 seconds total between each
+exposure). The pier and telescope mount hence need to be very stiff, with an
+altitude-over-azimuth mount made of steel, hydrostatic bearings on both axes,
+and a pier (16~m diameter; 1.25~m thick walls). All this is mounted directly
+to virgin bedrock.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Telescope enclosure view
+  % Source: https://www.lsst.org/about/tel-site/summit
+  % To add: \includegraphics[width=0.85\textwidth]{images/telescope_enclosure.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 2: Telescope Enclosure View]}\\
+    \small Source: \url{https://www.lsst.org/about/tel-site/summit}
+  \vspace{20pt}}}
+  \caption{Telescope enclosure view.
+           Courtesy: \url{https://www.lsst.org/about/tel-site/summit}}
+  \label{fig:enclosure}
+\end{figure}
+
+A sophisticated LSST observatory software scheduler will ensure minimal human
+intervention during observing, making the facility well automated under the
+watch of one operator at the summit.
+
+\subsection{Cost and Duration of Project}
+
+The start of the LSST as a project can be dated back to 2001 (Fifth Decadal
+Report, Astronomy and Astrophysics, 2001---Large Aperture Synoptic Survey
+Telescope). It was conceived as early as the 1990s, with Tony Tyson of the
+University of California (Davis) and Roger Angel (University of Arizona)
+visualising a telescope to survey dark matter and time domain (Dark Matter
+Telescope, 1996).
+
+With \$473 million as the upper cap for the entire project,\footnote{Major
+Research Equipment and Facility Construction (MREFC) funding at a not-to-exceed
+cost of \$473M.} AURA being one of the first contributors, the LSSTC was formed
+in 2003. The Department of Energy (DOE/SLAC) contributed \$168M of the upper
+cap for the camera. Notable individual contributors include Charles Simonyi
+(US\$20M) and Bill Gates (upwards of US\$10M). Mirror construction began in
+2007 and polishing was completed in 2014. Construction of the telescope and
+site began in the fourth quarter of FY2014. Engineering first light is planned
+for the end of Q1 FY2021, with full science operations starting at the end of
+FY2022. In all, this is a project that will have taken almost two decades since
+its official inception, and roughly 27 years in all.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: LSST site under construction
+  % Source: https://www.lsst.org/about/tel-site
+  % To add: \includegraphics[width=0.85\textwidth]{images/lsst_construction.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 3: The LSST Site Under Construction]}\\
+    \small Source: \url{https://www.lsst.org/about/tel-site}
+  \vspace{20pt}}}
+  \caption{The LSST site under construction.
+           Courtesy: \url{https://www.lsst.org/about/tel-site}}
+  \label{fig:construction}
+\end{figure}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Technical Details}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Telescope}
+
+The LSST boasts a unique three-mirror, three-lens optical assembly, along with
+the world's largest charge-coupled device (CCD) camera. Magnetic motors power
+its movements, and it has adopted an active optics system enabling shape
+modification of the different mirrors to ensure improved image quality. The
+telescopic assembly is equipped with light baffles to tackle ambient light,
+wind protection, and thermal controls (natural ventilation and day-time
+cooling). Its design is unique in the 8-m class of telescopes, with a very
+wide field of view of 3.5 degrees in diameter, or 9.6 square degrees. This,
+coupled with a large aperture, makes for a large \'{e}tendue (``light-spread'')
+more than roughly three times that of the best existing telescopes---Subaru
+and PAN-STARRS.
+
+\subsection{Optical Assembly}
+
+The most preliminary design for the LSST optical assembly came from Roger
+Angel, Director of the Steward Observatory Mirror Lab, University of Arizona,
+and his collaborators, as the ``Dark Matter Telescope'' design. It is the
+latest in a long line of optical assembly improvements directed at removing
+two aberrations---spherical and coma---leaving only astigmatism to enable a
+wider field of view. The LSST then, as an improvement, uses a
+``three-mirror anastigmat'' to cancel astigmatism as well. This enables
+sharper images over a very wide field of view, with somewhat compromised light
+gathering power due to the secondary mirror blocking the telescope aperture.
+
+\subsection{Optics}
+
+The system consists of three non-spherical mirrors (hence the name
+three-mirror anastigmat): the primary mirror at 8.4~m, the secondary at
+3.5~m convex, and the 5.0~m tertiary mirror. It can view a 9.62 square-degree
+patch of the sky, a 3.5-degree field of view covering a 64~cm diameter flat
+focal plane.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Three mirror assembly and camera-detector
+  % Source: https://www.lsst.org/about/tel-site/optical_design
+  % To add: \includegraphics[width=0.85\textwidth]{images/three_mirror_assembly.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 5: The Three Mirror Assembly and Camera-Detector]}\\
+    \small Source: \url{https://www.lsst.org/about/tel-site/optical_design}
+  \vspace{20pt}}}
+  \caption{The three mirror assembly and camera-detector.
+           Courtesy: \url{https://www.lsst.org/about/tel-site/optical_design}}
+  \label{fig:threemirror}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  % Image: The M1M3 monolith
+  % Source: https://www.lsst.org/about/tel-site/optical_design
+  % To add: \includegraphics[width=0.85\textwidth]{images/m1m3_monolith.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 6: The M1M3 Monolith]}\\
+    \small Source: \url{https://www.lsst.org/about/tel-site/optical_design}
+  \vspace{20pt}}}
+  \caption{The M1M3 monolith.
+           Courtesy: \url{https://www.lsst.org/about/tel-site/optical_design}}
+  \label{fig:m1m3}
+\end{figure}
+
+The system is described as fast-optical (M1: f/1.8; M2: f/1.00; M3: f/0.83),
+coupled with a large optical area and sensitive detectors to take very deep
+images with a very large field of view. The length of the system is compact at
+6.4~m from the vertex of the secondary to that of the tertiary. The primary
+is highly annular, giving an outer clear aperture of 8.36~m and an inner
+diameter of 5.12~m---effectively a collecting area equivalent to a 6.67~m
+filled aperture. A hole in the secondary mirror holds the camera readout
+electronics; a hole in the tertiary holds equipment for optical alignment.
+
+The system is optimised to work between the ultraviolet and near-infrared
+electromagnetic wavelength range, following the filter set $u, g, r, i, z, y$.
+Image quality is better than 0.3 arcseconds for all bands (80\% encircled
+energy of a point source), and better than 0.2 arcseconds for the $r, i, z, y$
+bands. The atmosphere limits imaging to around 0.7 arcseconds.
+
+The detector captures 63\% of an object's light at the centre out to a field
+radius of 0.7 degrees, and 57\% at the full field radius of 1.75 degrees. The
+\'{e}tendue (aperture area $\times$ field of view) is
+319.5~m$^{2}$\,deg$^{2}$.
+
+\subsection{Mirror Design}
+
+The primary and tertiary mirrors (M1 and M3) form a single continuous surface
+known as the M1M3 monolith, fabricated from a single substrate of Ohara E6
+low-expansion glass. Since the two mirrors curve differently, a slight cusp
+forms where they meet.
+
+To keep the structure light and thermally responsive, a honeycomb structure---
+stiff yet lightweight---supports the mirror surface rather than a solid backing.
+The mirror was cast and finished over seven years (2008--2015) at the mirror
+lab of the University of Arizona's Steward Observatory.
+
+The 3.42~m secondary mirror (M2) is the largest convex mirror ever made. A
+100~mm-thick solid blank of low-expansion glass was used. By removing 1{,}735~lbs
+of glass to leave a 19~mm face sheet, the mirror weight was reduced to 680~kg,
+and the entire assembly to 2{,}714~kg---52\% of its initial weight.
+
+\subsection{Camera}
+
+The LSST camera is the largest ever constructed. It is the size of a small
+car: approximately 5.5~ft by 9.8~ft in dimensions, weighing about 2{,}800~kg.
+It is a wide-field optical imager capable of viewing light between
+0.3--1~$\mu$m (near-ultraviolet to near-infrared). A 3.5-degree field of view
+is enabled using a 10-$\mu$m pixel setup capable of 0.2 arcsecond sampling,
+optimising pixel sensitivity versus resolution.
+
+A flat image surface of approximately 64~cm diameter is achieved by a mosaic
+of 189 16-megapixel silicon detectors, arranged on 21 raft assemblies, for a
+total of approximately 3.2 gigapixels. A filter changing mechanism and shutter
+are placed in the middle of the telescope.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Schematic of the LSST camera
+  % Source: https://www.lsst.org/about/camera
+  % To add: \includegraphics[width=0.85\textwidth]{images/lsst_camera.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 7: Schematic of the LSST Camera]}\\
+    \small Source: \url{https://www.lsst.org/about/camera}
+  \vspace{20pt}}}
+  \caption{A schematic of the LSST camera.
+           Courtesy: \url{https://www.lsst.org/about/camera}}
+  \label{fig:camera}
+\end{figure}
+
+\subsubsection{Focal Plane}
+
+Charge-coupled devices (CCDs) are laid out in an array operating at
+approximately $-100$~\textdegree{}C, housed in an evacuated cryostat. The
+lens at the cryostat serves both as the light entrance for the detector and
+the vacuum seal for the cryostat. Five filters, each 75~cm in diameter, can
+be accommodated inside the ``filter carousel'' and swapped robotically in
+2 minutes or less.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Camera focal plane schematic
+  % Source: https://www.lsst.org/about/camera/focalplane
+  % To add: \includegraphics[width=0.85\textwidth]{images/focal_plane.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 8: The Camera's Focal Plane]}\\
+    \small Source: \url{https://www.lsst.org/about/camera/focalplane}
+  \vspace{20pt}}}
+  \caption{The camera's focal plane---schematic.
+           Courtesy: \url{https://www.lsst.org/about/camera/focalplane}}
+  \label{fig:focalplane}
+\end{figure}
+
+\subsubsection{Detector Design}
+
+A total of 21 rafts hold 189 CCDs, with each raft comprising a $3\times3$
+square of sensors. Each CCD is built up of $4096 \times 4097$ imaging
+elements with 16 outputs, giving 144 channels per raft and 3{,}024 channels
+across the entire focal plane array.
+
+The rafts are mounted on towers that also hold front-end electronics for data
+readout. High-density flexible cables carry data to back-end electronics where
+they are converted to digital format. Cooling straps maintain each raft at
+approximately $-100$~\textdegree{}C. Each raft functions as an autonomous
+complete camera and is individually controlled by the Observatory Control
+System. The data rate is 8~megapixels per second per CCD, for a total of
+3.2~gigapixels per second.
+
+\begin{figure}[htbp]
+  \centering
+  % Image: 21 rafts assembled
+  % Source: https://www.lsst.org/about/camera/rafttower
+  % To add: \includegraphics[width=0.85\textwidth]{images/raft_towers.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 9: 21 Rafts Mounted on Towers]}\\
+    \small Source: \url{https://www.lsst.org/about/camera/rafttower}
+  \vspace{20pt}}}
+  \caption{21 rafts, each mounted on towers with electronics and assembled
+           into one unit. Courtesy: \url{https://www.lsst.org/about/camera/rafttower}}
+  \label{fig:rafts}
+\end{figure}
+
+\subsubsection{Specifications at a Glance}
+
+\textbf{Focal Plane}
+\begin{itemize}[leftmargin=*]
+  \item High quantum efficiency to 1{,}000~nm
+  \item Thick silicon $>100$~nm
+  \item Point spread function effective at $\ll 0.7$~arcseconds
+  \item Fast f/1.2 focal ratio
+  \item Wide field of view at 3{,}200~cm$^{2}$ focal plane
+  \item High throughput: $>90$\% fill factor
+  \item 2-second fast readout; 3{,}024 output ports; 150 connections per sensor
+  \item Low read noise: $<10$~electrons
+\end{itemize}
+
+\textbf{Camera Data Rates}
+\begin{itemize}[leftmargin=*]
+  \item More than 3~GB/s peak raw data
+  \item 3.2 billion pixels readout in 2 seconds with 15-second integration
+  \item Dynamic range: 18 bits/pixel
+  \item $>0.6$~GB/s average in the pipeline
+  \item Approximately 15~TB of data per night
+  \item 2~Tflops/s average; 9~Tflops/s peak
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Scientific Details}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Science Case}
+
+The roots of this project go back to the 1990s, with the idea of the Dark
+Matter Telescope (Tony Tyson and Roger Angel). The LSST's scientific goals are
+profound:
+
+\begin{itemize}[leftmargin=*]
+  \item What is the mysterious dark energy driving the acceleration of cosmic
+        expansion?
+  \item What is dark matter, and how do its distribution and properties affect
+        the formation of stars, galaxies, and larger structures?
+  \item What is the formation history of the Milky Way?
+  \item What is the nature of the outer regions of the solar system?
+  \item Are there new exotic and explosive phenomena in the universe yet to be
+        discovered?
+\end{itemize}
+
+The LSST adopts a simple conceptual approach: conduct a deep survey over a
+very large area of the sky; repeat images of every part of the sky fast enough;
+pick up multiple bands of the electromagnetic spectrum every few nights; and
+continue for 10 years.
+
+\subsection{The Nature of Dark Matter and Dark Energy}
+
+Several billion galaxies will be probed using a variety of cross-checking
+methods. Strong and weak gravitational lensing provides great insight into
+dark matter; the LSST will find thousands of gravitational lenses of all sizes
+and configurations. Specific investigations include:
+
+\begin{itemize}[leftmargin=*]
+  \item Galaxy correlations in 3-D space vs.\ cosmic epoch to evaluate
+        expansion of the universe.
+  \item Counts of dark matter clusters via weak gravitational lensing fused
+        with optical data, as probes of dark energy.
+  \item Supernovae for probing the cosmic era when dark energy becomes
+        prominent.
+  \item Simultaneous measurements of mass growth and space-time curvature, to
+        distinguish between dark energy and modified gravity as the source of
+        recent acceleration.
+\end{itemize}
+
+\subsection{Cataloguing the Solar System}
+
+Several million moving objects will be monitored (up to 100 times more than
+current availability), encompassing orbital, colour, and variability
+information. Near-Earth asteroids through to main belt asteroids will be
+observed, and up to 90\% of Potentially Hazardous Asteroids (PHAs) larger
+than 140~m in diameter could be detected.
+
+\subsection{The Transient Sky}
+
+Repeated night sky imaging at considerable depths with excellent image quality
+will reveal new information about variable stars and cosmic explosions, while
+also discovering entirely new classes of transient events. Within one minute
+of a change in the sky, the LSST will generate an alert to the scientific
+community. The LSST is forecast to discover 3--4 million supernovae during
+its 10-year survey.
+
+\subsection{Milky Way Structure and Formation}
+
+The LSST will survey at least half the sky with each area observed over 100
+times. Colours and brightness of billions of new stars, motions of millions
+of them, and other observations will yield a map over 1{,}000 times deeper
+than past surveys when stacked in depth. This is expected to answer fundamental
+questions about the structure and evolutionary history of the Milky Way.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Special Techniques}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Survey Strategy}
+
+The LSST is expected to conduct a 10-year survey taking more than five million
+exposures, amounting to 50~petabytes of raw image data. Data will be taken in
+back-to-back pairs of 15-second exposures. One pair constitutes a ``single
+visit''---a single observation of a ten square-degree field through one
+particular filter.
+
+Operations strategies generated by the Operations Simulator (OpSim) include:
+
+\begin{description}[leftmargin=*]
+  \item[Wide, Fast, Deep (WFD)] 85--95\% of observing time; 18{,}000 square
+        degrees of sky; declination range $-65^{\circ}$ to $+65^{\circ}$;
+        pairs spaced $\sim$40 minutes apart across all six filters, observing
+        each field every $\sim$3 days.
+  \item[North Ecliptic Spur (NES)] Extension to WFD to reach higher airmass.
+        Excludes $u$ and $y$ filters.
+  \item[Galactic Plane] Regions of high stellar density. Fewer total
+        exposures per field than WFD; no pairing.
+  \item[South Celestial Pole (SCP)] Higher airmass extension to WFD, south
+        of declination $-65^{\circ}$. Covers $ugrizy$.
+  \item[Deep Drilling Fields (DD)] Single pointings in extended sequences;
+        various filter combinations providing near-simultaneous colour
+        information for variable and transient objects.
+\end{description}
+
+\subsection{Information Processing}
+
+\begin{description}[leftmargin=*]
+  \item[AlertSim] Generates alerts for sky changes and transmits them
+        world-wide within 60 seconds of taking the exposure.
+  \item[CatSim] Simulates properties and distributions of stars, galaxies,
+        and asteroids.
+  \item[PhoSim] Photon simulator; generates representative images of the sky.
+  \item[GalSim] Open-source package for simulating images of stars and
+        galaxies for weak-lensing analysis.
+  \item[MAF] Metrics Analysis Framework; analyses outputs of the operations
+        simulator.
+\end{description}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Data Management}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The LSST will produce about 20~TB of raw data per night. Data management is
+architected in three layers:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Infrastructure Layer:} Computing, storage, networking hardware
+        and system software.
+  \item \textbf{Middleware Layer:} Distributed processing, data access, user
+        interface, and system operations services.
+  \item \textbf{Applications Layer:} Data pipelines, data products, and
+        science data archives.
+\end{enumerate}
+
+\subsection{Pipelines}
+
+\begin{description}[leftmargin=*]
+  \item[Nightly Pipelines] Based on image subtraction; highlight differences
+        between two exposures of the same field. Detect transient events and
+        send alerts within 60 seconds.
+  \item[Data Release Pipelines] Release fully analysed data products covering
+        long time scales.
+  \item[Calibration Products Pipeline] Produces calibration data required by
+        other pipelines.
+\end{description}
+
+\begin{figure}[htbp]
+  \centering
+  % Image: Data management pipelines
+  % Source: https://www.lsst.org/about/dm
+  % To add: \includegraphics[width=0.85\textwidth]{images/data_pipelines.jpg}
+  \fbox{\parbox{0.85\textwidth}{\centering\vspace{20pt}
+    \textit{[Figure 10: Data Management Pipelines]}\\
+    \small Source: \url{https://www.lsst.org/about/dm}
+  \vspace{20pt}}}
+  \caption{Data management pipelines.
+           Courtesy: \url{https://www.lsst.org/about/dm}}
+  \label{fig:pipelines}
+\end{figure}
+
+\subsection{Data Products}
+
+Three main categories:
+
+\begin{description}[leftmargin=*]
+  \item[Prompt] Generated every night with 60-second latency; source
+        catalogues derived from difference images; image data products
+        released with 24-hour latency.
+  \item[Data Releases] Made available annually as the result of coherent
+        processing of all science data to date.
+  \item[User Generated] Originating from the community; access controls
+        enable limited or open distribution.
+\end{description}
+
+The scientific database will include a source catalogue (7 trillion rows),
+object catalogue (37 billion rows, 200 attributes each), a moving object
+catalogue (6 million rows), a 60-second alerts database, and calibration,
+configuration, processing, and provenance metadata.
+
+\subsection{Data Storage and Processing Facilities}
+
+\begin{itemize}[leftmargin=*]
+  \item A mountain summit and base facility: data acquisition at the summit;
+        storage and routing at the base.
+  \item A supercomputing-class archive facility: complete processing,
+        reprocessing, and permanent storage. IN2P3 (France) hosts a full
+        copy and handles half the data release processing.
+  \item Two project-funded data access centres co-located with the archive
+        and base facilities; serving disaster recovery and open public
+        interfaces to data products.
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Beyond Surveying: Outreach and Education}
+% ─────────────────────────────────────────────────────────────────────────────
+
+While predominantly a survey project, the LSST aims to revolutionise public
+and school education and outreach, reaching out under four categories:
+
+\begin{description}[leftmargin=*]
+  \item[General Public] An Education and Public Outreach (EPO) website
+        featuring news about LSST discoveries, profiles of scientists and
+        engineers, and opportunities for non-specialists to explore LSST data.
+  \item[Formal Educators] An online data-driven classroom covering commonly
+        taught topics in physics and astronomy.
+  \item[Planetariums and Informal Science Centres] A gallery of high-end
+        multimedia visualisations available for download and integration into
+        exhibits and presentations.
+  \item[Citizen Scientist Researchers] Support for citizen science projects
+        using LSST data, including a dedicated project-building tool.
+\end{description}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% References
+% ─────────────────────────────────────────────────────────────────────────────
+\newpage
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{enumerate}[leftmargin=*,label={[\arabic*]}]
+  \item LSST Corporation. \textit{LSST: Large Synoptic Survey Telescope}.
+        \url{https://www.lsst.org}. Accessed 2020.
+  \item National Research Council. \textit{Astronomy and Astrophysics in the
+        New Millennium}. National Academies Press, 2001.
+  \item Tyson, J.~A. \textit{Large Synoptic Survey Telescope: Overview}.
+        SPIE~4836, 2002.
+  \item LSST Science Collaboration. \textit{LSST Science Book}, version 2.0.
+        arXiv:0912.0201, 2009.
+  \item LSST Camera Team, SLAC National Accelerator Laboratory.
+        \url{https://www.lsst.org/about/camera}. Accessed 2020.
+  \item LSST Data Management Team.
+        \url{https://www.lsst.org/about/dm}. Accessed 2020.
+\end{enumerate}
+
+\vfill
+\begin{center}
+  \small\textcolor{gray}{%
+    Kshitij Govil~$\cdot$~Varad Lifestyle Consulting~$\cdot$~
+    \url{https://dummyneversleeps.com}~$\cdot$~
+    \url{https://github.com/inertialee}%
+  }
+\end{center}
+
+\end{document}
