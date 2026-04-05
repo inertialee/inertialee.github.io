@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Petabyte Sky — dummyneversleeps</title>
-  <meta name="description" content="Architecture, Science, and the Large Synoptic Survey Telescope." />
+  <meta name="description" content="Architecture, Science, and the Vera C. Rubin Observatory (LSST)." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -31,7 +31,7 @@
       font-family: var(--font-body);
       font-weight: 300;
       line-height: 1.8;
-      -webkit-font-smoothing: antialiase
+      -webkit-font-smoothing: antialiased;
     }
 
     body::before {
@@ -134,9 +134,81 @@
       color: var(--text-muted);
     }
 
+    /* ── FIGURES ─────────────────────────────────────────── */
+    figure {
+      margin: 3rem -1rem;
+    }
+    figure img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+      opacity: 0.92;
+      transition: opacity 0.3s;
+    }
+    figure img:hover { opacity: 1; }
+    figcaption {
+      margin-top: 0.75rem;
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    /* ── ORIGINAL DOCUMENT SECTION ───────────────────────── */
+    .source-section {
+      margin-top: 6rem;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.015);
+    }
+    .source-section .source-label {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .source-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .source-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .source-link {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .source-link:hover {
+      color: var(--accent);
+      border-color: transparent;
+    }
+    .source-link-secondary {
+      color: var(--text-muted);
+      border-bottom-color: var(--text-muted);
+    }
+
     /* ── FOOTER ──────────────────────────────────────────── */
     .article-footer {
-      margin-top: 6rem;
+      margin-top: 4rem;
       padding-top: 2rem;
       border-top: 1px solid var(--rule);
       font-family: var(--font-head);
@@ -155,47 +227,89 @@
 
   <article>
     <header>
-      <p class="meta">Architecture & Physics</p>
+      <p class="meta">Architecture &amp; Physics · Vera C. Rubin Observatory</p>
       <h1>The Petabyte Sky</h1>
-      <p class="lead">Every clear night for ten years, one telescope will photograph the entire visible sky.</p>
+      <p class="lead">Every clear night for ten years, one telescope photographs the entire visible sky.</p>
     </header>
 
-    <p>By the end of its survey, it will have generated 50 petabytes of raw data — roughly ten times the information stored in the entire US Library of Congress — catalogued 37 billion astronomical objects, detected three to four million supernovae, and potentially identified every asteroid large enough to end civilisation as we know it.</p>
+    <p>By the end of its survey, it generates 50 petabytes of raw data — roughly ten times the information stored in the entire US Library of Congress — cataloguing 37 billion astronomical objects, detecting three to four million supernovae, and potentially identifying every asteroid large enough to end civilisation as we know it.</p>
     <p>This is what it takes to build it.</p>
 
     <h2>Why This Telescope Is Different</h2>
-    <p>Most telescopes look deep. The LSST looks everywhere.</p>
-    <p>A conventional observatory points at one patch of sky for hours, gathering light from the faintest, most distant objects it can find. The LSST does something fundamentally different — it scans the entire visible sky every three nights, building a time-lapse of the cosmos at a scale and depth never before attempted.</p>
-    <p>The technical term for this capability is <strong>étendue</strong> — a measure of how much light a telescope can gather across how wide a field. The LSST’s étendue is more than three times that of the best existing survey telescopes. It sees more sky, more deeply, more often than anything built before it.</p>
+    <p>Most telescopes look deep. The Vera C. Rubin Observatory looks everywhere.</p>
+    <p>A conventional observatory points at one patch of sky for hours, gathering light from the faintest, most distant objects it can find. The Rubin Observatory — built around the LSST survey — does something fundamentally different: it scans the entire visible sky every three nights, building a time-lapse of the cosmos at a scale and depth never before attempted.</p>
+    <p>The technical term for this capability is <strong>étendue</strong> — a measure of how much light a telescope can gather across how wide a field. The LSST's étendue is more than three times that of the best existing survey telescopes. It sees more sky, more deeply, more often than anything built before it.</p>
 
     <blockquote>
-      “The LSST will catalog 90 percent of near-Earth objects larger than 300 metres and assess the threat they pose to life on Earth.”
+      "The LSST catalogs 90 percent of near-Earth objects larger than 300 metres and assesses the threat they pose to life on Earth."
       <span class="attribution">— Fifth Decadal Report, Astronomy and Astrophysics, 2001</span>
     </blockquote>
 
     <h2>The Mountain</h2>
-    <p>The LSST site sits at Cerro Pachón, a ridge in the Chilean Andes at 2,682 metres above sea level — chosen for its extraordinarily dry, stable atmosphere, the same conditions that make the southern Andes home to Gemini South and the SOAR telescope.</p>
-    <p>The structure isn’t just a dome on a mountain. It’s an engineered response to a specific physics problem: the telescope must slew 3.5 degrees to an adjacent field of sky and settle completely in under five seconds — four seconds for the structure, one for the mirrors — between every single exposure.</p>
+    <p>The observatory site sits at Cerro Pachón, a ridge in the Chilean Andes at 2,682 metres above sea level — chosen for its extraordinarily dry, stable atmosphere, the same conditions that make the southern Andes home to Gemini South and the SOAR telescope.</p>
+    <p>The structure isn't just a dome on a mountain. It's an engineered response to a specific physics problem: the telescope must slew 3.5 degrees to an adjacent field of sky and settle completely in under five seconds — four seconds for the structure, one for the mirrors — between every single exposure.</p>
     <p>All night. Every night.</p>
     <p>The solution: magnetic motors, hydrostatic bearings on both axes, and a pier sixteen metres in diameter with walls 1.25 metres thick, mounted directly into virgin bedrock.</p>
 
+    <!-- FIGURE 1: Aerial photograph — most visually striking, human scale -->
+    <figure>
+      <img
+        src="../images/lsst-aerial.jpg"
+        alt="Aerial photograph of the Vera C. Rubin Observatory at Cerro Pachón, showing the dome, lower enclosure, vertical platform lift, service building, and the auxiliary telescope on the adjacent peak."
+        loading="lazy"
+      />
+      <figcaption>
+        Cerro Pachón, Chile · The Rubin Observatory dome, lower enclosure, and service building —
+        with the Rubin Auxiliary Telescope visible on the adjacent peak.
+        Courtesy: LSST / Rubin Observatory
+      </figcaption>
+    </figure>
+
     <h2>Three Mirrors, One Insight</h2>
     <p>Most large telescopes use two mirrors. The LSST uses three — and that third mirror is the reason everything else is possible.</p>
-    <p>A two-mirror system eliminates two optical aberrations: spherical distortion and coma. But it leaves astigmatism, which limits the usable field of view. The LSST’s three-mirror anastigmat design cancels astigmatism as well, producing sharp images across a 3.5-degree field — roughly seven times the apparent diameter of the full Moon.</p>
-    <p>The primary and tertiary mirrors are cast from a single piece of Ohara E6 low-expansion glass — a monolith, technically, since they share one substrate despite curving differently. Seven years of fabrication at the University of Arizona’s Steward Observatory Mirror Lab.</p>
+    <p>A two-mirror system eliminates two optical aberrations: spherical distortion and coma. But it leaves astigmatism, which limits the usable field of view. The LSST's three-mirror anastigmat design cancels astigmatism as well, producing sharp images across a 3.5-degree field — roughly seven times the apparent diameter of the full Moon.</p>
+    <p>The primary and tertiary mirrors are cast from a single piece of Ohara E6 low-expansion glass — a monolith, technically, since they share one substrate despite curving differently. Seven years of fabrication at the University of Arizona's Steward Observatory Mirror Lab. The team that built it is photographed standing at its perimeter and sitting at its centre: the mirror is that large.</p>
     <p>The secondary, at 3.42 metres, is the largest convex mirror ever made. The entire optical system — primary, secondary, tertiary — fits within a structure just 6.4 metres long. Compact, by design.</p>
 
-    <h2>The Camera That Sees 3.2 Billion Pixels</h2>
+    <!-- FIGURE 2: Three-mirror diagram — shows what three mirrors means -->
+    <figure>
+      <img
+        src="../images/lsst-threemirror.png"
+        alt="Schematic of the LSST three-mirror anastigmat optical assembly showing M1, M2, M3, and the corrector lens system."
+        loading="lazy"
+      />
+      <figcaption>
+        The three-mirror anastigmat: primary M1 (8.4 m), convex secondary M2 (3.5 m),
+        tertiary M3 (5.0 m), and three corrector lenses focussing light onto a flat
+        3.5-degree field. Courtesy: LSST / Rubin Observatory
+      </figcaption>
+    </figure>
+
+    <h2>The Camera That Sees 3.2 Billion Pixels at Once</h2>
     <p>The LSST camera is approximately the size of a small car: 1.65 metres by 3 metres, weighing 2,800 kilograms. It is the largest optical camera ever constructed.</p>
     <p>Its focal plane is a mosaic of 189 individual silicon detectors — each a CCD operating at minus 100 degrees Celsius — arrayed across 21 raft assemblies. Total resolution: 3.2 gigapixels per exposure. Readout time: 2 seconds. Integration time: 15 seconds.</p>
     <p>The camera generates more than 3 gigabytes of raw data per second at peak. Five filters — spanning ultraviolet through near-infrared — sit in a carousel that swaps robotically in under two minutes. The system rotates through all six filter bands across every field it observes, building multi-wavelength portraits of every object in the sky.</p>
 
-    <h2>What It’s Actually Looking For</h2>
+    <!-- FIGURE 3: Camera cross-section — human figure gives immediate scale -->
+    <figure>
+      <img
+        src="../images/lsst-camera.jpg"
+        alt="Three-quarter section rendering of the LSST camera showing focal plane, cryostat, corrector lenses, filter, and utility trunk, with a human silhouette for scale."
+        loading="lazy"
+      />
+      <figcaption>
+        The LSST camera in cross-section: 1.65 m diameter, 2,800 kg.
+        The human silhouette (left) is not decorative — it is the scale reference.
+        Courtesy: LSST / Rubin Observatory
+      </figcaption>
+    </figure>
+
+    <h2>What It's Actually Looking For</h2>
     <p>The LSST was conceived to answer four questions that sit at the edge of what physics currently knows:</p>
-    <p><strong>What is dark energy?</strong> The universe is expanding — and that expansion is accelerating. Something is driving it. The LSST will observe thousands of Type Ia supernovae across cosmic history, mapping the acceleration with enough precision to constrain what dark energy actually is.</p>
-    <p><strong>What is dark matter?</strong> By measuring how background galaxies are distorted by invisible mass concentrations — gravitational lensing — the LSST will map dark matter across billions of light years in three dimensions.</p>
-    <p><strong>What threatens Earth from space?</strong> The LSST is projected to detect 90% of all potentially hazardous asteroids larger than 140 metres. Every one of them. Within 60 seconds of first detection, an alert goes to the global scientific community.</p>
-    <p><strong>What changes in the night sky?</strong> Supernovae, variable stars, transient events of unknown classification — anything that changes between one three-night visit and the next gets flagged automatically. The LSST is expected to discover entirely new categories of astronomical phenomena.</p>
+    <p><strong>What is dark energy?</strong> The universe is expanding — and that expansion is accelerating. Something is driving it. The LSST observes thousands of Type Ia supernovae across cosmic history, mapping the acceleration with enough precision to constrain what dark energy actually is.</p>
+    <p><strong>What is dark matter?</strong> By measuring how background galaxies are distorted by invisible mass concentrations — gravitational lensing — the LSST maps dark matter across billions of light years in three dimensions.</p>
+    <p><strong>What threatens Earth from space?</strong> The LSST detects 90% of all potentially hazardous asteroids larger than 140 metres. Every one of them. Within 60 seconds of first detection, an alert reaches the global scientific community.</p>
+    <p><strong>What changes in the night sky?</strong> Supernovae, variable stars, transient events of unknown classification — anything that changes between one three-night visit and the next gets flagged automatically. The LSST discovers entirely new categories of astronomical phenomena.</p>
 
     <h2>How You Photograph Everything, Every Three Days</h2>
     <p>The survey strategy divides the sky into a hierarchy of priorities. 85 to 95 percent of observing time goes to the Wide-Fast-Deep survey: 18,000 square degrees of sky, observed in back-to-back 15-second pairs through alternating filters, every field revisited within three days.</p>
@@ -203,15 +317,40 @@
     <p>20 terabytes of raw data per night. 50 petabytes over the full decade.</p>
 
     <h2>The Data Is the Science</h2>
-    <p>The LSST’s scientific value lives as much in its data architecture as in its optics. Within 60 seconds of any exposure, automated pipelines compare the new image against a reference, flag every change, and transmit alerts worldwide.</p>
+    <p>The LSST's scientific value lives as much in its data architecture as in its optics. Within 60 seconds of any exposure, automated pipelines compare the new image against a reference, flag every change, and transmit alerts worldwide.</p>
     <p>A source catalogue of 7 trillion rows. An object catalogue of 37 billion entries, 200 attributes each. Annual data releases made available to the global astronomical community.</p>
     <p>IN2P3 in France hosts a complete copy of the archive. Two public access centres provide open interfaces to everything. No data is proprietary. No findings are withheld.</p>
-    <p>The LSST was designed, from the beginning, to be everyone’s telescope.</p>
+    <p>The LSST was designed, from the beginning, to be everyone's telescope.</p>
 
     <h2>A Note on What This Took</h2>
     <p>The LSST was first proposed in 1996 as the Dark Matter Telescope — a conceptual sketch by Tony Tyson and Roger Angel. The Fifth Decadal Report formalised it in 2001. Mirror construction began in 2007. Polishing completed in 2014. Construction at Cerro Pachón began in 2014.</p>
     <p>From concept to first light: roughly 25 years. From first light to the end of the survey: another decade.</p>
-    <p>The final dataset will exist long after the telescope stops observing. Generations of astronomers will spend careers inside it. Some of the things it discovers don’t have names yet.</p>
+    <p>In January 2020, the telescope was formally renamed the Vera C. Rubin Observatory, honouring the astronomer whose observations of galaxy rotation curves provided some of the earliest compelling evidence for dark matter. The renaming is fitting. The telescope she now names maps, in unprecedented detail, the very dark matter whose existence her work helped establish.</p>
+    <p>The final dataset will exist long after the telescope stops observing. Generations of astronomers will spend careers inside it. Some of the things it discovers don't have names yet.</p>
+
+    <!-- SOURCE DOCUMENT SECTION -->
+    <div class="source-section">
+      <p class="source-label">Original Literature Review</p>
+      <p>This essay is adapted from a technical report written at York University in 2020, covering the LSST's optical design, camera engineering, survey strategy, and data management architecture in full. The original includes figures, optical specifications, and 6 primary references.</p>
+      <div class="source-links">
+        <a
+          href="../writing/lsst-technical-report.pdf"
+          class="source-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Download Technical Report (PDF) →
+        </a>
+        <a
+          href="https://github.com/inertialee/CLDSA/blob/main/writing/LSST_York.tex"
+          class="source-link source-link-secondary"
+          target="_blank"
+          rel="noopener"
+        >
+          View Source Markup (.tex) →
+        </a>
+      </div>
+    </div>
 
     <div class="article-footer">
       Kshitij Govil &nbsp;·&nbsp; York University, 2020 &nbsp;·&nbsp; Updated for Web, 2026
@@ -220,4 +359,3 @@
 
 </body>
 </html>
-
