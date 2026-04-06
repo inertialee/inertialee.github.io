@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deutsch, Shor, and the Geometry of Qubits — dummyneversleeps</title>
+  <meta name="description" content="Quantum algorithms — from Deutsch-Jozsa through Shor's factoring algorithm and the problem of decoherence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:             #07050E;
+      --bg-deep:        #050309;
+      --text-primary:   #F0E8D5;
+      --text-secondary: #A89880;
+      --text-muted:     #5C5068;
+      --accent:         #D4720A;
+      --rule:           #1A1530;
+      --font-display:   'Cormorant', Georgia, serif;
+      --font-head:      'Syne', sans-serif;
+      --font-body:      'Jost', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 9999;
+    }
+
+    nav {
+      padding: 2rem 4rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--accent); }
+    .nav-series {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    article {
+      max-width: 680px;
+      margin: 6rem auto 8rem;
+      padding: 0 2rem;
+    }
+
+    header { margin-bottom: 4rem; }
+
+    .series-tag {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .meta {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin: 4rem 0 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+    p strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    blockquote {
+      margin: 3rem 0;
+      padding-left: 2rem;
+      border-left: 2px solid var(--accent);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .attribution {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .pull {
+      margin: 3.5rem 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.4;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 2rem 1rem;
+    }
+
+    .series-nav {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .series-nav-item {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .series-nav-label {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .series-nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: color 0.3s;
+    }
+    .series-nav-link:hover { color: var(--accent); }
+    .series-nav-right { text-align: right; }
+
+    .source-section {
+      margin-top: 5rem;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.015);
+    }
+    .source-section .source-label {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .source-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .source-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .source-link {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+    .source-link:hover { color: var(--accent); border-color: transparent; }
+    .source-link-secondary {
+      color: var(--text-muted);
+      border-bottom-color: var(--text-muted);
+    }
+
+    .article-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">← Return to DNS</a>
+    <span class="nav-series">The Stately World of Quantum Computing · Part II of III</span>
+  </nav>
+
+  <article>
+    <header>
+      <p class="series-tag">Survey · Part II of III — Algorithms</p>
+      <p class="meta">Quantum Physics · York University, 2019</p>
+      <h1>Deutsch, Shor, and the Geometry of Qubits</h1>
+      <p class="lead">RSA encryption protects global banking, government communications, and the internet. It relies on one assumption: that factoring large numbers into primes is computationally hard. In 1994, Peter Shor proved that assumption is only true for classical computers.</p>
+    </header>
+
+    <p>This is not an academic concern. RSA-2048, the standard encryption protecting most internet traffic, would take a classical supercomputer millions of years to break. Shor's algorithm, running on a sufficiently large quantum computer, breaks it in hours. The algorithm exists. The mathematics is settled. Only the hardware remains unbuilt at scale.</p>
+    <p>Before Shor, there was Deutsch — and before the algorithms, there was the geometry. This is the story of how quantum parallelism becomes useful computation.</p>
+
+    <h2>The First Algorithm That Proved a Point</h2>
+    <p>The Deutsch-Jozsa algorithm, published in 1992 by David Deutsch and Richard Jozsa, has almost no practical application. Its value is entirely philosophical — and that makes it one of the most important papers in the history of the field.</p>
+    <p>The problem it solves: given a function f that maps n-bit strings to a single bit (0 or 1), determine with certainty whether f is <strong>constant</strong> (always outputs 0, or always outputs 1) or <strong>balanced</strong> (outputs 0 for exactly half of inputs and 1 for the other half).</p>
+    <p>Classically, in the worst case, you need to evaluate f on more than half of its 2<sup>n</sup> possible inputs before you can be certain of the answer. For n = 100, that is more evaluations than there are atoms in the observable universe. Deutsch-Jozsa does it in a single evaluation of f, with certainty, using quantum parallelism and interference.</p>
+    <p>The mechanism: prepare a quantum register in an equal superposition of all 2<sup>n</sup> input states using n Hadamard gates — a transformation that takes |0⟩ to (|0⟩ + |1⟩)/√2, creating superposition. Evaluate f on this superposition simultaneously using the quantum gate U<sub>f</sub>. The interference of amplitudes then encodes the answer: if f is constant, a specific measurement result appears with certainty; if f is balanced, a different result appears with certainty. One call to U<sub>f</sub> suffices.</p>
+
+    <blockquote>
+      "This was the first example of a quantum algorithm that outperforms any classical algorithm."
+      <span class="attribution">— Rieffel &amp; Polak, Quantum Computing: A Gentle Introduction</span>
+    </blockquote>
+
+    <p>The point was not the problem. The point was the proof of concept: quantum parallelism, combined with interference, produces a computational advantage that is not merely faster but categorically different.</p>
+
+    <h2>Simon's Hidden String</h2>
+    <p>Daniel Simon's 1994 algorithm was the bridge between Deutsch-Jozsa and Shor — and crucially, it was the algorithm that inspired Shor to look at factoring.</p>
+    <p>Simon's problem: given a function f such that f(x) = f(y) if and only if x ⊕ y = a (where a is some hidden n-bit string), find a. Classically, the best algorithm requires O(2<sup>n/2</sup>) evaluations of f — exponential in n. Simon's quantum algorithm finds a in O(n) quantum evaluations, followed by O(n²) classical post-processing steps. The speedup is exponential.</p>
+    <p>The technique was new: quantum parallelism to create a superposition over all inputs, measurement to collapse to a state orthogonal to the hidden string, and classical linear algebra to extract a from enough such measurements. This combination — quantum sampling followed by classical post-processing — became the template for quantum algorithms.</p>
+
+    <h2>The Algorithm That Should Terrify Banks</h2>
+    <p>Peter Shor's 1994 factoring algorithm is the reason quantum computing moved from academic curiosity to national security concern.</p>
+    <p>The problem: given a composite integer N, find its prime factors. The best known classical algorithm for this — the general number field sieve — runs in time exponential in the cube root of the number of digits. For N with 2048 binary digits (RSA-2048), classical factoring is computationally infeasible in any reasonable timeframe.</p>
+    <p>Shor's key insight, inspired by Simon's algorithm, was that factoring reduces to finding the <strong>period</strong> of the function f(a) = x<sup>a</sup> mod N, for a randomly chosen x. If you know the period r of this function, you can extract the prime factors of N using elementary number theory (specifically, by computing the greatest common divisor of x<sup>r/2</sup> ± 1 and N using Euclid's algorithm on a classical computer).</p>
+    <p>The period r can be exponentially large — classical period-finding is infeasible. But on a quantum computer, the period can be found using the <strong>quantum Fourier transform</strong>, which operates on the 2<sup>2L</sup>-dimensional state space of 2L qubits. The exponential dimensionality of this space permits the Fourier transform of an exponentially long sequence — something impossible classically — reducing to O(L³) quantum operations.</p>
+
+    <div class="pull">
+      The quantum Fourier transform finds the period of a sequence in polynomial time by exploiting a Hilbert space whose dimension grows exponentially with the number of qubits.
+    </div>
+
+    <p>The algorithm has two main components: modular exponentiation — computing x<sup>a</sup> mod N for all values of a in superposition — and the inverse quantum Fourier transform (QFT). Together they take O(L³) operations. The entire factoring algorithm runs in polynomial time.</p>
+    <p>In 2001, IBM demonstrated Shor's algorithm on a 7-qubit Nuclear Magnetic Resonance quantum computer, factoring 15 = 3 × 5. In 2007, photonic qubits demonstrated compiled versions. In 2012, a 9-element solid-state processor factored 15 using four phase qubits and five superconducting resonators. The same year, a scalable qubit-recycled version factored 21 — the largest integer yet achieved with Shor's algorithm at that time. Each demonstration revealed both progress and the gap remaining.</p>
+
+    <h2>The Noise That Eats Computation</h2>
+    <p>The problem with quantum computation is that quantum states are fragile. Any interaction between a qubit and its environment — a stray electromagnetic field, a phonon, a photon — causes <strong>decoherence</strong>: the qubit becomes entangled with the environment, its superposition collapses, and the quantum information is lost.</p>
+    <p>Decoherence is not just a practical inconvenience. It is a fundamental physical process. And as computations grow longer — more qubits, more gates, more time — errors accumulate. The output of a sufficiently long quantum computation becomes indistinguishable from noise.</p>
+    <p>Shor addressed this directly. In 1995, he showed that quantum error correction is possible: by encoding one logical qubit into a subspace of multiple physical qubits, errors can be detected and corrected without measuring — and therefore without collapsing — the encoded quantum information. The key insight is that error correction requires only measuring certain correlations between qubits (the syndrome), not the qubit states themselves.</p>
+    <p>A further refinement followed: fault-tolerant quantum computation. Shor's 1996 paper showed that for any quantum computation with t gates, a polynomial-size quantum circuit exists that can tolerate O(1/(log t)<sup>c</sup>) inaccuracy and decoherence per gate for some constant c. Below a threshold error rate per gate, arbitrarily long computations become possible by adding redundancy.</p>
+
+    <blockquote>
+      "Any quantum computer realistically built is expected to have unreliable components. Inaccuracies in quantum state transformations during computation pile up, rendering the output of long computations unreliable."
+      <span class="attribution">— Peter Shor, 1996</span>
+    </blockquote>
+
+    <p>The threshold theorem is the theoretical foundation for practical quantum computing. It says: build your qubits well enough — below a certain error rate per gate — and the error correction overhead is manageable. The physical error rate for current superconducting qubits is approaching but has not yet reliably crossed this threshold for large systems.</p>
+
+    <h2>What the Algorithms Reveal</h2>
+    <p>The four algorithms of this era — Deutsch-Jozsa, Simon's, Shor's factoring, and the error correction framework — collectively define what quantum computing is and is not.</p>
+    <p>Quantum computing is not universally faster. For most problems — sorting, searching unstructured data, most optimisation tasks — quantum speedup is modest or nonexistent. Grover's algorithm provides a quadratic speedup for unstructured search (O(√N) vs O(N) classically), useful but not revolutionary.</p>
+    <p>Quantum computing provides exponential speedup for a specific class of problems: those with hidden algebraic structure — periodicity, symmetry, Fourier-transformable properties — that quantum interference can exploit. Factoring is one such problem. Discrete logarithms are another. Quantum simulation of quantum systems — Feynman's original motivation — is a third.</p>
+    <p>The question Sycamore was built to answer was different: not whether quantum computers can solve useful problems faster, but whether they can perform <em>any</em> computation beyond the reach of classical supercomputers. That is quantum supremacy. And that is Part III.</p>
+
+    <!-- Series navigation -->
+    <div class="series-nav">
+      <div class="series-nav-item">
+        <p class="series-nav-label">← Part I</p>
+        <a href="quantum-part1.html" class="series-nav-link">Turing, Feynman, and the Machine that Thinks in Superposition</a>
+      </div>
+      <div class="series-nav-item series-nav-right">
+        <p class="series-nav-label">Part III — Upcoming</p>
+        <span style="color: var(--text-muted); font-size: 0.65rem; letter-spacing: 0.1em;">Sycamore, Willow, and the Post-Classical Horizon</span>
+      </div>
+    </div>
+
+    <!-- Source document -->
+    <div class="source-section">
+      <p class="source-label">Original Survey Paper</p>
+      <p>This essay is adapted from a 43-source graduate survey written at York University in 2019. The original document includes complete mathematical treatment of the Deutsch-Jozsa and Shor algorithms, circuit diagrams, Hamiltonian derivations, and full bibliography.</p>
+      <div class="source-links">
+        <a href="../writing/stately-world-quantum-computing-part2.pdf" class="source-link" target="_blank" rel="noopener">
+          Download Part II (PDF) →
+        </a>
+        <a href="https://github.com/inertialee/CLDSA/blob/main/writing/stately_world_quantum.tex" class="source-link source-link-secondary" target="_blank" rel="noopener">
+          View Source Markup (.tex) →
+        </a>
+      </div>
+    </div>
+
+    <div class="article-footer">
+      Kshitij Govil &nbsp;·&nbsp; York University, 2019 &nbsp;·&nbsp; Updated for Web, 2026
+    </div>
+  </article>
+
+</body>
+</html>
