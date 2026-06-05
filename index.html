@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── TOKENS ─────────────────────────────────────────── */
     :root {
       --bg:             #07050E;
       --bg-deep:        #050309;
@@ -29,7 +28,6 @@
       --font-body:      'Jost', sans-serif;
     }
 
-    /* ── RESET ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -43,7 +41,6 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    /* ── NOISE OVERLAY ───────────────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -54,7 +51,6 @@
       z-index: 9999;
     }
 
-    /* ── NAV ─────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -109,7 +105,6 @@
     .nav-links a:hover { color: var(--text-primary); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* ── HERO ────────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -142,14 +137,12 @@
     }
 
     .hero-rule-top {
-      width: 1px;
-      height: 80px;
+      width: 1px; height: 80px;
       background: linear-gradient(to bottom, transparent, rgba(212,114,10,0.4));
       margin-bottom: 3rem;
       animation: grow-line 1.2s ease forwards;
       transform-origin: top;
     }
-
     @keyframes grow-line {
       from { transform: scaleY(0); opacity: 0; }
       to   { transform: scaleY(1); opacity: 1; }
@@ -179,7 +172,6 @@
       opacity: 0;
       animation: fade-up 1s ease 0.7s forwards;
     }
-
     .hero-statement em {
       font-style: normal;
       color: var(--accent);
@@ -221,8 +213,7 @@
     }
 
     .hero-rule-bottom {
-      width: 1px;
-      height: 80px;
+      width: 1px; height: 80px;
       background: linear-gradient(to bottom, rgba(61,111,212,0.4), transparent);
       margin-top: 3.5rem;
       opacity: 0;
@@ -238,7 +229,6 @@
       to   { opacity: 1; }
     }
 
-    /* ── SECTIONS ────────────────────────────────────────── */
     section {
       max-width: 1100px;
       margin: 0 auto;
@@ -265,7 +255,6 @@
       opacity: 0.4;
     }
 
-    /* ── SIGNAL ──────────────────────────────────────────── */
     #signal .signal-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -281,19 +270,15 @@
       color: var(--text-primary);
       margin-bottom: 1.8rem;
     }
-
     .signal-text p {
       font-size: 0.95rem;
       color: var(--text-secondary);
       line-height: 1.85;
       font-weight: 300;
     }
-
     .signal-text p + p { margin-top: 1.2rem; }
 
-    .signal-thread {
-      padding-top: 0.5rem;
-    }
+    .signal-thread { padding-top: 0.5rem; }
 
     .thread-item {
       display: flex;
@@ -304,10 +289,7 @@
       transform: translateX(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .thread-item.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    .thread-item.visible { opacity: 1; transform: translateX(0); }
     .thread-item:last-child { margin-bottom: 0; }
 
     .thread-num {
@@ -339,7 +321,6 @@
       line-height: 1.7;
     }
 
-    /* ── WORK ────────────────────────────────────────────── */
     #work { background: var(--bg-deep); max-width: 100%; padding: 7rem 0; }
     #work > .inner { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
 
@@ -383,7 +364,6 @@
       color: var(--text-muted);
       margin-bottom: 1.2rem;
     }
-
     .work-card h3 {
       font-family: var(--font-display);
       font-size: 1.5rem;
@@ -392,14 +372,12 @@
       color: var(--text-primary);
       margin-bottom: 1rem;
     }
-
     .work-card p {
       font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.75;
       font-weight: 300;
     }
-
     .work-card-link {
       display: inline-block;
       margin-top: 1.8rem;
@@ -414,7 +392,6 @@
     }
     .work-card-link:hover { letter-spacing: 0.28em; }
 
-    /* Status dot */
     .status-dot {
       display: inline-block;
       width: 6px; height: 6px;
@@ -428,7 +405,6 @@
       50% { opacity: 0.6; transform: scale(0.85); }
     }
 
-    /* ── WRITING ─────────────────────────────────────────── */
     #writing .writing-list {
       display: flex;
       flex-direction: column;
@@ -490,7 +466,6 @@
       color: var(--text-muted);
     }
 
-    /* ── CONNECT ─────────────────────────────────────────── */
     #connect {
       text-align: center;
       padding: 9rem 4rem;
@@ -519,7 +494,6 @@
       gap: 3rem;
       flex-wrap: wrap;
     }
-
     .connect-link {
       font-family: var(--font-head);
       font-size: 0.65rem;
@@ -538,7 +512,6 @@
       letter-spacing: 0.3em;
     }
 
-    /* ── FOOTER ──────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--rule);
       padding: 2.5rem 4rem;
@@ -560,18 +533,13 @@
       color: var(--text-muted);
     }
 
-    /* ── SCROLL REVEAL ───────────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 2rem; }
       section { padding: 5rem 2rem; }
@@ -586,7 +554,6 @@
       #connect { padding: 6rem 2rem; }
     }
 
-    /* ── CUSTOM CURSOR ───────────────────────────────────── */
     @media (pointer: fine) {
       body { cursor: none; }
       .cursor {
@@ -614,44 +581,40 @@
 </head>
 <body>
 
-  <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Navigation -->
   <nav id="nav">
     <a href="#hero" class="nav-mark">DNS</a>
-        <ul class="nav-links">
+    <ul class="nav-links">
       <li><a href="#signal">Signal</a></li>
       <li><a href="#writing">Writing</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
   <section id="hero">
     <div class="hero-rule-top"></div>
-    <p class="hero-eyebrow"><!--Kshitij Govil--> &nbsp;·&nbsp; Physicist · Quant · Anchor ·</p>
+    <p class="hero-eyebrow">&nbsp;·&nbsp; Physicist · Quant · Anchor ·</p>
     <h2 class="hero-statement">
-        <em>The Universe is fluid~</em> <br><em><!--not a fluid.--></em>
+      <em>The Universe is fluid —</em> <br><em>not a fluid.</em>
     </h2>
-    <p class="hero-attribution"><!-- — Original, 2026--></p>
+    <p class="hero-attribution">— Original, 2026</p>
     <div class="hero-name">
-      <h1>DNS <!--dummyneversleeps--> </h1>
-      <p>    Signal detection under noise...·&nbsp; &nbsp; <!-- Always.--> </p>
+      <h1>DNS</h1>
+      <p>Signal detection under noise · Always.</p>
     </div>
     <div class="hero-rule-bottom"></div>
   </section>
 
-  <!-- Signal — the throughline -->
   <section id="signal">
     <p class="section-label reveal">The Signal</p>
     <div class="signal-grid">
       <div class="signal-text reveal">
         <h2>One mind.<br>Three disciplines.<br>One throughline.</h2>
-        <p>The Faint Signals of Stars. <!-- at the edge of detectability -->Financial Markets. <!-- during the 2008 crisis -->Engineering algorithmic trading & banking systems. <!--from--> - First Principles. Grounded In Reality.<!-- — the work has always been the same.--> </p>
-        <p>Extracting signal from noise. Under real constraints. <!-- Without apology. --> </p>
-        <p style="margin-top:1.8rem; font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-primary); line-height: 1.6;">"The smallest unit of knowledge is intent...<!-- that survives reforming.-->"</p>
+        <p>The Faint Signals of Stars. Financial Markets. Engineering algorithmic trading &amp; banking systems. First Principles. Grounded In Reality.</p>
+        <p>Extracting signal from noise. Under real constraints.</p>
+        <p style="margin-top:1.8rem; font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-primary); line-height: 1.6;">"The smallest unit of knowledge is intent that survives reforming."</p>
       </div>
       <div class="signal-thread">
         <div class="thread-item">
@@ -659,7 +622,7 @@
           <div class="thread-content">
             <h3>Physics</h3>
             <p>Two MScs in Physics — Condensed Matter at MUJ (2015) and Astrophysics at York University Toronto (2020). The first produced a published paper on ZnMnCoO nanoparticle synthesis: sol-gel fabrication, XRD structural characterisation, Williamson-Hall strain analysis, 26nm crystal size. The second produced experimental telescope characterisation at the Allan I. Carswell Observatory — BVRI photometry, Stetson calibration, IRAF/DAOPHOT data reduction, plate scale and limiting magnitude determination. Plus a technical report on the LSST, a quantum computing survey across 43 primary sources, and dark matter research that stalled on programming access, not physics capability.
-The range: from crystal lattice strain fields at 26 nanometres to pulsar timing arrays at parsec distances. The discipline across that range is identical — extract the signal, characterise the noise, document what you actually found.Depth, structural, not performative. The system holds it. </p>
+            The range: from crystal lattice strain fields at 26 nanometres to pulsar timing arrays at parsec distances. The discipline across that range is identical — extract the signal, characterise the noise, document what you actually found. Depth, structural, not performative. The system holds it.</p>
           </div>
         </div>
         <div class="thread-item">
@@ -667,91 +630,42 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
           <div class="thread-content">
             <h3>Capital Markets</h3>
             <p>HSBC, 2007–2009: frontline credit card operations, US markets, during the peak of the subprime crisis. The financial system breaking is not an abstraction when it arrives as a human voice at the end of its rope. That is where the cost of infrastructure failure becomes personal and concrete.
-              Deutsche Bank, December 2009–June 2013: operations and analyst roles across reconciliation, corporate actions, and process integrity. US equities, private wealth management, institutional flows touching London, Tokyo, and Liverpool. Zero-tolerance environments where a misaligned entry at end-of-day has consequences that compound. CISI Certificate. Six years of learning what holds under pressure and what quietly breaks. 
-               <p>Discipline. Risk Architecture. <em>Not Recalled.</em> Built every time from First Principles. <strong>Embedded.</strong></p></p>
+            Deutsche Bank, December 2009–June 2013: operations and analyst roles across reconciliation, corporate actions, and process integrity. US equities, private wealth management, institutional flows touching London, Tokyo, and Liverpool. Zero-tolerance environments where a misaligned entry at end-of-day has consequences that compound. CISI Certificate. Six years of learning what holds under pressure and what quietly breaks.</p>
+            <p>Discipline. Risk Architecture. Not Recalled. Built every time from First Principles. Embedded.</p>
           </div>
         </div>
         <div class="thread-item">
           <span class="thread-num">III</span>
           <div class="thread-content">
-            <h3>Systems - Algorithmic|Tactile </h3>
+            <h3>Systems — Algorithmic | Tactile</h3>
             <p>Anchor, Varad Lifestyle Consulting (Vancouver BC, April 2022). The primary active project: CLDSA — {(Collaborative)(Life)} Data and Signal Architecture — a market-agnostic, broker-agnostic algorithmic trading engine built from first principles under severe hardware constraints. Full execution logic running on a 4GB ARM64 mobile terminal. Cells 0 through 7 confirmed across environment setup, broker authentication, account management, historical data, live price feeds, technical indicators, signal engine, order engine, and portfolio tracking with mark-to-market PnL.
-                This is not recalled. This is built, cell by cell, with a timestamped audit trail at every step.
-                  The methodology is a deliberate Human+AI collaborative architecture — diagnostic thinking and domain judgment are human; execution, synthesis, and memory are 1+1. The work CLDSA does is what makes the Physics and Capital Markets sections above retrievable, coherent, and useful rather than merely historical.
-                  The system is the memory. The system is the work.</p>
+            This is not recalled. This is built, cell by cell, with a timestamped audit trail at every step.
+            The methodology is a deliberate Human+AI collaborative architecture — diagnostic thinking and domain judgment are human; execution, synthesis, and memory are 1+1. The work CLDSA does is what makes the Physics and Capital Markets sections above retrievable, coherent, and useful rather than merely historical.
+            The system is the memory. The system is the work.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- AUDIT SECTION — TEMPORARILY HIDDEN
   <section id="audit" style="padding-bottom: 3rem;">
     <div style="border: 1px solid var(--rule); background: var(--bg-deep); padding: 4rem 3rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" class="reveal" onmouseover="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 12px 40px rgba(212,114,10,0.08)'" onmouseout="this.style.borderColor='var(--rule)'; this.style.boxShadow='none'">
       <div style="position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--flow-gradient);"></div>
-      
       <p style="font-family: var(--font-head); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;">Fractional Technical Lead</p>
-      
       <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.2;">The 10-Day Architecture Audit</h2>
-      
       <p style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem;">$10,000 CAD &nbsp;|&nbsp; 10 Working Days &nbsp;|&nbsp; Remote-First</p>
-      
       <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 3rem; line-height: 1.8; font-weight: 300;">A focused structural diagnosis of scaling technical architecture. I step into stalled builds, map the friction points, pressure-test API exception handling, and deliver a PM-grade structural blueprint before the system drops a transaction or costs a client.</p>
-      
-      <a href="./assets/CLDSA_Architecture_Audit.pdf" target="_blank" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-head); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212,114,10,0.1)'" onmouseout="this.style.background='transparent'">Download Full Scope & Pricing →</a>
+      <a href="./assets/CLDSA_Architecture_Audit.pdf" target="_blank" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: var(--font-head); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212,114,10,0.1)'" onmouseout="this.style.background='transparent'">Download Full Scope &amp; Pricing &#x2192;</a>
     </div>
   </section>
-  <!--
+  AUDIT SECTION — TEMPORARILY HIDDEN -->
 
-  <div id="work">
-    <div class="inner">
-      <p class="section-label reveal">Work</p>
-      <div class="work-grid">
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Algorithmic Trading</p>
-          <h3>CLDSA</h3>
-          <p><span class="status-dot"></span>84 cells. 9 layers. Market-agnostic architecture. Cells 0–7 confirmed. Medallion-grade design. Built and owned under Varad Lifestyle Consulting.</p>
-          <a href="https://github.com/inertialee/CLDSA" target="_blank" class="work-card-link">View on GitHub →</a>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Observational Astronomy</p>
-          <h3>Telescope Characterisation</h3>
-          <p>1m telescope, Allan I. Carswell Observatory. BVRI photometry, Stetson calibration, IRAF data reduction. Plate scale, limiting magnitudes, curves of growth. Graduate research, York 2020.</p>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Quantum Physics</p>
-          <h3>The Stately World of Quantum Computing</h3>
-          <p>From Turing's tape to Google's Sycamore. Feynman, Deutsch, Shor. Hamiltonians, decoherence, quantum supremacy. 43 primary sources. York University, 2019.</p>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Survey Astronomy</p>
-          <h3>LSST Technical Report</h3>
-          <p>Original technical paper on the Large Synoptic Survey Telescope. 3-mirror anastigmat optics, 3.2Gpx CCD camera, 20TB/night pipeline, 50 petabyte survey strategy. Dark matter. Dark energy.</p>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Published Research · 2015</p>
-          <h3>ZnMnCoO Nanoparticle Synthesis</h3>
-          <p>Govil K. et al. Structural characterisation of Zn₀.₉Mn₀.₀₅Co₀.₀₅O via sol-gel synthesis, XRD, and Williamson-Hall analysis. 26nm crystal size. Compressive strain −0.0068. IJASET, Jan 2015.</p>
-        </div>
-
-        <div class="work-card reveal">
-          <p class="work-card-tag">Capital Markets</p>
-          <h3>Institutional Operations</h3>
-          <p>HSBC 2007–09: US credit operations through subprime crisis. Deutsche Bank 2009–13: US equities, PWM, corporate actions. London, Tokyo, Liverpool. CISI certified.</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  -->
   <section id="writing">
     <p class="section-label reveal">Writing</p>
     <div class="writing-list reveal">
 
-            <a href="./articles/dark-gets-the-land.html" class="writing-item">
+      <a href="./articles/dark-gets-the-land.html" class="writing-item">
         <div>
           <p class="writing-meta">Science Essay · Graduate Level</p>
           <p class="writing-title">Dark gets the land of light — Stellar Fate and the Radio Window</p>
@@ -766,9 +680,10 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
         </div>
         <span class="writing-arrow">→</span>
       </a>
+
       <a href="./articles/why-4pi.html" class="writing-item">
         <div>
-          <p class="writing-meta">Physics & Geometry · First Principles</p>
+          <p class="writing-meta">Physics &amp; Geometry · First Principles</p>
           <p class="writing-title">Why 4π — The Geometry of Isotropy and the Architecture of Space</p>
         </div>
         <span class="writing-arrow">→</span>
@@ -801,7 +716,6 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
     </div>
   </section>
 
-  <!-- Connect -->
   <section id="connect">
     <h2 class="reveal">If the signal<br>reaches you —</h2>
     <p class="reveal">Physicist. Quant. Operator. Open to opportunities in algorithmic trading, quantitative research, silicon photonics, optoelectronics, PhD programs, and anything that rewards signal detection under noise.</p>
@@ -812,7 +726,6 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2026 Kshitij Govil &nbsp;·&nbsp; Varad Lifestyle Consulting</p>
     <p class="footer-mark">dummyneversleeps</p>
@@ -820,13 +733,11 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
   </footer>
 
   <script>
-    // Nav scroll state
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const threadItems = document.querySelectorAll('.thread-item');
     const observer = new IntersectionObserver((entries) => {
@@ -848,7 +759,6 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
       io.observe(el);
     });
 
-    // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -867,7 +777,6 @@ The range: from crystal lattice strain fields at 26 nanometres to pulsar timing 
     }
     animateRing();
 
-    // Cursor hover state
     document.querySelectorAll('a, button, .work-card').forEach(el => {
       el.addEventListener('mouseenter', () => {
         if (cursor) cursor.style.transform = 'translate(-50%,-50%) scale(2)';
